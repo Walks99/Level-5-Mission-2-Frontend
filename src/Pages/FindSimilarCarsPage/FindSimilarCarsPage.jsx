@@ -21,8 +21,10 @@ function FindSimilarCarsPage() {
 
       try {
         // Make a POST request to your backend API
-        const response = await fetch('http://localhost:3000/predictCarModel', {
+        const response = await fetch('http://localhost:4000/predictCarModel', {
           method: 'POST',
+          mode: 'cors', // Include this line to handle CORS
+          credentials: 'include', // Include this line if you're sending cookies
           body: formData,
         });
 
@@ -61,7 +63,7 @@ function FindSimilarCarsPage() {
       <h1>Find Similar Cars</h1>
 
       {/* Form for image upload and prediction */}
-      <form onSubmit={predictCarModel}>
+      <form onSubmit={predictCarModel} encType="multipart/form-data">
         {/* Label for file input */}
         <label htmlFor="imageUpload">Upload a car image:</label>
         {/* File input element */}
