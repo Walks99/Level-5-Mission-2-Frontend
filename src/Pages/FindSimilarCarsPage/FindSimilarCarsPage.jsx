@@ -102,8 +102,10 @@ function FindSimilarCarsPage() {
     if (file) {
       const formData = new FormData();
       formData.append('carImage', file);
+      
 
       try {
+        console.log(formData);
         const response = await fetch('http://localhost:4000/predictCarModel', {
           method: 'POST',
           mode: 'cors',
